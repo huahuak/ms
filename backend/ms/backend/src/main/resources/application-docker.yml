@@ -1,0 +1,38 @@
+# custom properties
+custom:
+  rocketmq:
+    topic:
+      orders: goods-order-topic
+    group:
+      consumer: goods-order-consumer-group
+  auth:
+    salt: bc30a3c8-b96b-49d2-bb9f-1c28f9408eb3
+  switch:
+    all: false
+    authCheck: true
+    randomCheck: true
+    startTimeCheck: true
+
+# rocket mq
+rocketmq:
+#  name-server: tguio.club:9876
+  name-server: rmqnamesrv:9876
+  producer:
+    group: goods-order-producer-group
+
+spring:
+  application:
+    name: ms-web
+  redis:
+    host: msredis
+    port: 6379
+#    password: Aa1@0000
+    database: 0
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://msmysql:3306/ms
+    username: root
+    password: ms
+    driver-class-name: com.mysql.jdbc.Driver

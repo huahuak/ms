@@ -1,0 +1,26 @@
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: dev
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: ms
+    ports:
+      - "13002:3306"
+    logging:
+      driver: "none"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "13003:6379"
+    logging:
+      driver: "none"
+
+networks:
+  default:
+    external:
+      name: allinone

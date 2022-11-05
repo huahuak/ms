@@ -1,0 +1,52 @@
+server:
+  port: 8848
+
+# true 表示生产环境，会关闭 swagger
+active: false
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#  metrics:
+#    export:
+#      influx:
+#        enabled: false
+#        # uri: http://influxdb:8086
+#        uri: http://localhost:11004
+#        bucket: decision-engine
+#        token: IzKmlQva1QsAxhK5UmlTa7jIP3YpFtMEN37qDJrY-FFMs9Sdob-A2PDXqzhXtmsmeEaaeXEt20XCLO4y8stiUw==
+#        org: ms
+#        step: 10s
+
+spring:
+  datasource:
+    #  url: jdbc:mysql://172.32.32.230:3306/sxfcds2104486
+    # username: sxfcds2104486
+    # password: SX_fcds2104486
+    url: jdbc:mysql://msmysql:3306/ms
+    username: root
+    password: ms
+    # driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        # show_sql: true
+        hbm2ddl:
+          auto: update
+          # auto: create
+  redis:
+    # host: redis
+    host: msredis
+    # host: tguio.club
+    port: 6379
+#    username: default
+    password: Aa1@0000
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 4
+      min-idle: 1
+    # timeout: 5

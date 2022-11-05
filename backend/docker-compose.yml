@@ -1,0 +1,80 @@
+version: '3.5'
+services:
+  rmqnamesrv:
+    platform: linux/x86_64
+    image: foxiswho/rocketmq:server
+    container_name: rmqnamesrv
+    ports:
+      - 9876:9876
+    volumes:
+      - ./logs:/opt/logs
+      - ./store:/opt/store
+    networks:
+      - msnet
+
+  rmqbroker:
+    platform: linux/x86_64
+    image: foxiswho/rocketmq:broker
+    container_name: rmqbroker
+    ports:
+      - 10909:10909
+      - 10911:10911
+    volumes:
+      - ./logs:/opt/logs
+      - ./store:/opt/store
+      - ./conf/broker.conf:/etc/rocketmq/broker.conf
+    environment:
+      NAMESRV_ADDR: "rmqnamesrv:9876"
+      JAVA_OPTS: " -Duser.home=/opt"
+      JAVA_OPT_EXT: "-server -Xms128m -Xmx128m -Xmn128m"
+    command: mqbroker -c /etc/rocketmq/broker.conf
+    depends_on:
+      - rmqnamesrv
+    networks:
+      - msnet
+
+  # rmqconsole:
+  #   platform: linux/x86_64
+  #   image: styletang/rocketmq-console-ng
+  #   container_name: rmqconsole
+  #   ports:
+  #     - 18080:8080
+  #   environment:
+  #     JAVA_OPTS: "-Drocketmq.namesrv.addr=rmqnamesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
+  #   depends_on:
+  #     - rmqnamesrv
+  #   networks:
+  #     - msnet
+
+  mysql:
+    platform: linux/x86_64
+    image: mysql:5.7
+    container_name: msmysql
+    environment:
+      MYSQL_DATABASE: ms
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: ms
+    ports:
+      - "3306:3306"
+    logging:
+      driver: "none"
+    restart: always
+    networks:
+      - msnet
+
+  redis:
+    platform: linux/x86_64
+    image: "redis:alpine"
+    container_name: msredis
+    ports:
+      - "6379:6379"
+    logging:
+      driver: "none"
+    networks:
+      - msnet
+
+networks:
+  msnet:
+    name: msnet
+    driver: bridge

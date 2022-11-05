@@ -1,0 +1,34 @@
+# custom properties
+custom:
+  rocketmq:
+    topic:
+      orders: goods-order-topic
+    group:
+      consumer: goods-order-consumer-group
+
+
+
+# rocket mq
+rocketmq:
+#  name-server: tguio.club:9876
+  name-server: localhost:9876
+  producer:
+    group: goods-order-producer-group
+
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+#    password: Aa1@0000
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/ms
+    username: root
+    password: ms
+    driver-class-name: com.mysql.jdbc.Driver
+  application:
+    name: ms-backend

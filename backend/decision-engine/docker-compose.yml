@@ -1,0 +1,17 @@
+version: '3'
+services:
+  web:
+    # image: "trdthg/decision-engine:latest"
+    build:
+      context: .
+      # 请根据情况自选dockerfile
+      dockerfile: Dockerfile
+      # dockerfile: Dockerfile-skywalking
+    ports:
+      - "13001:8848"
+    # restart: always
+
+networks:
+  default:
+    external:
+      name: allinone
