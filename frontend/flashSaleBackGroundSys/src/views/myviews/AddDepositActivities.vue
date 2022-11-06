@@ -1,7 +1,7 @@
 <template>
   <div class="add">
     <el-card class="add-container">
-      <el-form :model="goodForm" :rules="rules" ref="goodRef" label-width="200px" class="goodForm" size="large">
+      <el-form :model="goodForm" :rules="rules" ref="goodRef" label-width="250px" class="goodForm" size="large">
         <el-form-item  label="产品名称">
           <el-input   style="width: 300px" v-model="goodForm.activity_name" placeholder="请输入产品名称"></el-input>
         </el-form-item>
@@ -17,22 +17,22 @@
         <el-form-item  label="产品总金额(元)">
           <el-input style="width: 300px" v-model="goodForm.activity_totalAmount" disabled></el-input>
         </el-form-item>
-        <el-form-item  label="存款额度(每人-元)">
+        <el-form-item  label="额度(每人-元)">
         <el-input style="width: 300px" v-model="goodForm.activity_moneyLimit" disabled></el-input>
         </el-form-item>
-        <el-form-item  label="存款期限(月)">
+        <el-form-item  label="期限(月)">
            <el-input-number style="width: 300px" v-model="goodForm.activity_timeLimit" :step="1" :min="1" :max="100" step-strictly />
         </el-form-item>
         <el-form-item label="年利率(%)">
           <el-input-number style="width: 300px" v-model="goodForm.activity_apr" :precision="2" :step="0.1" :max="6.00" :min="0"/>
         </el-form-item>
-		<el-form-item require label="是否当日起息" >
+		<el-form-item require label="是否当日起息(金融类商品参数)" >
 		  <el-select style="width: 300px" v-model="goodForm.rule.activity_dateRate" placeholder="选择">
 		    <el-option label="是" value="true"></el-option>
 		    <el-option label="否" value="false"></el-option>
 		  </el-select>
 		</el-form-item>
-		<el-form-item require label="是否随存随取" >
+		<el-form-item require label="是否随存随取(金融类商品参数)" >
 		  <el-select style="width: 300px" v-model="goodForm.rule.activity_dawa" placeholder="选择">
 		    <el-option label="是" value="true"></el-option>
 		    <el-option label="否" value="false"></el-option>
@@ -122,7 +122,7 @@ export default {
 	const submitNewActivity = () => {
 	  state.goodForm.activity_startTime = state.formTime[0]
 	  state.goodForm.activity_endTime = state.formTime[1]
-	  
+
 		submitNewDepositAct(state.goodForm).then((res)=>{
 			if(res.code==200) {
 				ElMessage({
@@ -167,8 +167,8 @@ export default {
 	  changePerPrice,
 	  changeOneMax,
 	  submitNewActivity,
-	  
-		
+
+
     }
   }
 }

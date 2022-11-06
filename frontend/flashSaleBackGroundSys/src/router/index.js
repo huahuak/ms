@@ -114,18 +114,22 @@ export const constantRoutes = [
       icon: 'nested'
     },
     children: [
+      {
+      path: 'CheckDepositActivities',
+      component: () => import('@/views/nested/CheckDepositActivities.vue'),
+      // name: '存款活动',
+      // meta: { title: '存款活动' },
+        name:'国内活动',
+        meta:{ title:'国内活动' },
+      },
 		{
 			path: 'CheckLoanActivities',
 			component: () => import('@/views/nested/CheckLoanActivities.vue'),
-			name: '贷款活动',
-			meta: { title: '贷款活动' },
+			// name: '贷款活动',
+			// meta: { title: '贷款活动' },
+      name: '海外活动',
+			meta: { title: '海外活动' },
 		},
-		  {
-			path: 'CheckDepositActivities',
-			component: () => import('@/views/nested/CheckDepositActivities.vue'),
-			name: '存款活动',
-			meta: { title: '存款活动' },
-		  },
     ]
   },
 
@@ -140,17 +144,17 @@ export const constantRoutes = [
     },
 	children: [
 	  {
+	    path: 'AddDepositActivities',
+	    component: () => import('@/views/myviews/AddDepositActivities.vue'), // Parent router-view
+	    name: 'AddDepositActivities',
+	    meta: { title: '发布国内活动' },
+	  },
+    {
 	    path: 'AddLoanActivities',
 	    component: () => import('@/views/myviews/AddLoanActivities.vue'), // Parent router-view
 	    name: 'AddLoanActivities',
-	    meta: { title: '发布贷款活动' },
+	    meta: { title: '发布海外活动' },
 		},
-		{
-		  path: 'AddDepositActivities',
-		  component: () => import('@/views/myviews/AddDepositActivities.vue'), // Parent router-view
-		  name: 'AddDepositActivities',
-		  meta: { title: '发布存款活动' },
-				},
 		]
   },
 

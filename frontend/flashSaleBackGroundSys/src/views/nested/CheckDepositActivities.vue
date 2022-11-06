@@ -24,7 +24,7 @@
       </el-table-column>
       <el-table-column
           prop="activity_timeLimit"
-          label="存款期限(月)"
+          label="期限(月)"
           width="90"
       >
       </el-table-column>
