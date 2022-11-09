@@ -53,15 +53,15 @@ export const constantRoutes = [
     redirect: '/ModifyLoanActivities',
     hidden: true,
 		meta: {
-		title: '贷款秒杀活动修改',
+		title: '秒杀活动修改',
 		icon: 'nested'
 		},
 		children:[
 			{
 				path: '',
 				component: () => import('@/views/myviews/ModifyLoanActivities.vue'),
-				name: '修改贷款活动',
-				meta: { title: '修改贷款活动' },
+				name: '修改活动',
+				meta: { title: '修改活动' },
 			},
 		]
   },
@@ -72,15 +72,15 @@ export const constantRoutes = [
 	  redirect: '/ModifyDepositActivities',
 	  hidden: true,
 		meta: {
-		title: '存款秒杀活动修改',
+		title: '秒杀活动修改',
 		icon: 'nested'
 		},
 		children:[
 			{
 				path: '',
 				component: () => import('@/views/myviews/ModifyDepositActivities.vue'),
-				name: '修改存款活动',
-				meta: { title: '修改存款活动' },
+				name: '修改活动',
+				meta: { title: '修改活动' },
 			},
 		]
 	},

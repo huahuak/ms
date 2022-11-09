@@ -67,7 +67,7 @@
 		data() {
 			return {
 				loadingFlag:false,
-				actNav:[{name:'类型1'},{name:'类型2'}],
+				actNav:[{name:'海外活动'},{name:'国内活动'}],
 				currentNav:0,
 				navStr:['loan','deposit'],	//用来插入URL
 				notice:"亲爱的用户:第一次点击活动介绍将进行初筛以提醒您是否有资格参与该活动",

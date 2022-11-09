@@ -89,7 +89,7 @@
 					}
 				},
 				"/api2": {
-					"target": "http://backend-web:8083", //需要代理到的指定服务器
+					"target": "http://backend-web:8848", //需要代理到的指定服务器
 					"pathRewrite": { //路径重写，将接口路径中以/api开头的部分替换掉
 						"^/api2": ""
 					}

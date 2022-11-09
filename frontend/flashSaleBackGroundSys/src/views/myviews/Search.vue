@@ -142,9 +142,9 @@ export default {
       let temp2 = route.query.activity_id;
       let temp3 = route.query.type;
       if (temp3=='deposit') {
-        temp3 = '存款产品'
+        temp3 = '产品'
       }else if(temp3=='loan'){
-        temp3 = '贷款产品'
+        temp3 = '产品'
       }
       if (temp1=="1") {
         title.value = "序号为\"" + temp2 + "\"的" + temp3 + "秒杀活动初筛通过者";
